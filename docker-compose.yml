@@ -1,12 +1,12 @@
-version: "3.3"
+version: "3"
 services:
-  umfaka_core:
-    image:  annona/umfaka_core:latest
-    container_name: umfaka_core
+  tele_vip:
+    image:  annona/tele_vip:latest
+    container_name: tele_vip
     restart: always
     volumes:
       - ./conf:/app/conf
-      - ./conf/.env:/app/.env
+      - ./.env:/app/.env
       - ./upload:/app/upload
     environment:
       - TZ=${TZ}
@@ -40,8 +40,12 @@ services:
       - PAYMENT_EASYPAY_API_URL=${PAYMENT_EASYPAY_API_URL}
       - PAYMENT_EASYPAY_API_PID=${PAYMENT_EASYPAY_API_PID}
       - PAYMENT_EASYPAY_API_KEY=${PAYMENT_EASYPAY_API_KEY}
-      - PAYMENT_EASYPAY_REQUEST_BODY_ENCODE=${PAYMENT_EASYPAY_REQUEST_BODY_ENCODE}
-      - PAYMENT_EASYPAY_API_DEVICE=${PAYMENT_EASYPAY_API_DEVICE}
+      - TELE_VIP_PRICE_MONTH_3=${TELE_VIP_PRICE_MONTH_3}
+      - TELE_VIP_PRICE_MONTH_6=${TELE_VIP_PRICE_MONTH_6}
+      - TELE_VIP_PRICE_MONTH_12=${TELE_VIP_PRICE_MONTH_12}
+      - FRAGMENT_API_URL=${FRAGMENT_API_URL}
+      - FRAGMENT_API_COOKIE=${FRAGMENT_API_COOKIE}
+      - TON_WALLET_MNEMONIC=${TON_WALLET_MNEMONIC}
     ports:
       - "${SERVER_PORT}:${SERVER_PORT}"
     extra_hosts:
